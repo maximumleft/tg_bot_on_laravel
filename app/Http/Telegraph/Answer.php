@@ -62,7 +62,7 @@ class Answer extends WebhookHandler
 
     public function hello(): void
     {
-        $imagePath = public_path('storage/images/hello.jpg');
+        $imagePath = public_path('storage/content\images\hello.jpg');
         $this->chat->photo($imagePath)->send();
     }
 

@@ -37,46 +37,38 @@ class Answer extends WebhookHandler
 
     public function ruslan(): void
     {
-        //$chat = $this->getChatId();
-        $this->chat->audio('C:\Projects_laravel\tg_bot_telegraph\content\songs\Мэйби Бэйби - DURAGA.mp3')->send();
+        $songPath = public_path('storage/content\songs\Мэйби Бэйби - DURAGA.mp3');
+        $this->chat->audio($songPath)->send();
     }
 
     public function fedos(): void
     {
-        //$chat = $this->getChatId();
-        $this->chat->audio('C:\Projects_laravel\tg_bot_telegraph\content\songs\trinadcat_karat_-_davajj_rasskazhem_(musmore.com).mp3')->send();
+        $songPath = public_path('storage/content\songs\trinadcat_karat_-_davajj_rasskazhem_(musmore.com).mp3');
+        $this->chat->audio($songPath)->send();
     }
 
     public function sergey(): void
     {
-       // $chat = $this->getChatId();
-        $this->chat->audio('C:\Projects_laravel\tg_bot_telegraph\content\songs\Gspd - ПУЛЬС (feat. КУОК).mp3')->send();
+        $songPath = public_path('storage/content\songs\Gspd - ПУЛЬС (feat. КУОК).mp3');
+        $this->chat->audio($songPath)->send();
     }
 
     public function maks(): void
     {
-        //$chat = $this->getChatId();
-        $this->chat->audio('C:\Projects_laravel\tg_bot_telegraph\content\songs\sqwoz-bab-300-mp3.mp3')
-            ->html('<b>ватафак бич, я молодой легенда</b>')->send();
+        $songPath = public_path('storage/content\songs\sqwoz-bab-300-mp3.mp3');
+        $this->chat->audio($songPath)
+            ->html('<b>Текст</b>')->send();
     }
 
     public function hello(): void
     {
-        //$chatId = $this->message->chat()->id();
-        //$chat = new TelegraphChat();
-        //$chat->chat_id = $chatId;
-       // $chat = $this->getChatId();
-        // $chat = Telegraph::find($chatId);
-        //$chat->message('hello')->send();
-       // $this->chat->photo('C:\Projects_laravel\tg_bot_telegraph\images\hello.jpg')->send();
-        $this->chat->photo('C:\Projects_laravel\tg_bot_telegraph\content\images\hello.jpg')->send();
-        //$chat->message('C:\Projects_laravel\tg_bot_telegraph\images\hello.jpg'? 'true' : "false")->send();
+        $imagePath = public_path('storage/images/hello.jpg');
+        $this->chat->photo($imagePath)->send();
     }
 
     public function help(): void
     {
-        $chat = $this->getChatId();
-        $chat->message('Говорил же не поможет')->send();
+        $this->chat->message('Говорил же не поможет')->send();
     }
 
     protected function handleChatMessage(Stringable $text): void

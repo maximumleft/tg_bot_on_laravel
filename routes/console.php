@@ -26,5 +26,6 @@ Artisan::command('tester', function () {
     dd($bot->registerCommands([
         'hello' => 'говорит здарова',
         'help' => 'не поможет',
+        'music'=> 'музыка на выбор',
     ])->send());
 });

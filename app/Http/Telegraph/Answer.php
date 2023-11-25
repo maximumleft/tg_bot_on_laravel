@@ -6,6 +6,7 @@ use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Handlers\WebhookHandler;
 use DefStudio\Telegraph\Keyboard\Button;
 use DefStudio\Telegraph\Keyboard\Keyboard;
+use DefStudio\Telegraph\Keyboard\ReplyKeyboard;
 use DefStudio\Telegraph\Models\TelegraphChat;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Log;
@@ -33,6 +34,21 @@ class Answer extends WebhookHandler
                     Button::make('Максончик')->action('maks'),
                 ])
             )->send();
+    }
+
+
+
+    public function music(): void
+    {
+      //  $chat = $this->getChatId();
+      //  $chat->message('Открой кнопошки')
+      //      ->replyKeyboard(
+      //          ReplyKeyboard::make()
+      //              ->button('Рок')->requestContact()
+      //             ->button('Панк-рок')->reply()
+      //              ->button('хип-хоп')->action('maks')
+      //              ->button('Электронная музыка')->action('ruslan'))
+      //      ->send();
     }
 
     public function ruslan(): void

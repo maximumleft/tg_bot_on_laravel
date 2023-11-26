@@ -22,7 +22,7 @@ class Answer extends WebhookHandler
         $chat = $this->getChatId();
         $chat->message("Привет, это музыкальный бот.")->send();
         $chat->message("Выбери категорию и получишь случайную песню)")->send();
-        $this->categoryChoice();
+        $this->music();
 
     }
 

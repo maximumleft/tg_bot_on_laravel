@@ -17,7 +17,7 @@ trait CategoryMusicTrait
     }
     public function waitLoad(): void
     {
-        $this->chat->message('Ждите файл')->send();
+        $this->chat->message('Выбираем песню...')->send();
     }
 
     public function categoryChoice(): void
@@ -43,8 +43,39 @@ trait CategoryMusicTrait
     public function hardRock(): void
     {
         $this->waitLoad();
-        $songPath = public_path('storage/content\songs\Мэйби Бэйби - DURAGA.mp3');
-        $this->chat->audio($songPath)->send();
+        $i = rand(0,9);
+        switch ($i){
+            case 0:
+                $this->chat->audio('storage/content\songs\hardRock\bad-company-dirty-boy.mp3')->send();
+                break;
+            case 1:
+                $this->chat->audio('storage/content\songs\hardRock\badge-in-the-eye-of-the-storm.mp3')->send();
+                break;
+            case 2:
+                $this->chat->audio('storage/content\songs\hardRock\chamber-of-kings-cannibal.mp3')->send();
+                break;
+            case 3:
+                $this->chat->audio('storage/content\songs\hardRock\electric-boys-tumblin039-dominoes.mp3')->send();
+                break;
+            case 4:
+                $this->chat->audio('storage/content\songs\hardRock\foreigner-juke-box-hero.mp3')->send();
+                break;
+            case 5:
+                $this->chat->audio('storage/content\songs\hardRock\no-2morrow-waves.mp3')->send();
+                break;
+            case 6:
+                $this->chat->audio('storage/content\songs\hardRock\skid-row-youth-gone-wild.mp3')->send();
+                break;
+            case 7:
+                $this->chat->audio('storage/content\songs\hardRock\tania-kikidi-rock-amp-roll-paradise.mp3')->send();
+                break;
+            case 8:
+                $this->chat->audio('storage/content\songs\hardRock\twisted-sister-the-kids-are-back.mp3')->send();
+                break;
+            case 9:
+                $this->chat->audio('storage/content\songs\hardRock\winger-in-for-the-kill.mp3')->send();
+                break;
+        }
     }
 
     public function punkRock(): void

@@ -6,6 +6,7 @@ use DefStudio\Telegraph\Facades\Telegraph;
 use DefStudio\Telegraph\Handlers\WebhookHandler;
 use DefStudio\Telegraph\Keyboard\Button;
 use DefStudio\Telegraph\Keyboard\Keyboard;
+use DefStudio\Telegraph\Keyboard\ReplyButton;
 use DefStudio\Telegraph\Keyboard\ReplyKeyboard;
 use DefStudio\Telegraph\Models\TelegraphChat;
 use GuzzleHttp\Psr7\Request;
@@ -20,6 +21,11 @@ class Answer extends WebhookHandler
         $chat = new TelegraphChat();
         $chat->chat_id = $chatId;
         return $chat;
+    }
+
+    public function waitLoad(): void
+    {
+        $this->chat->message('Ждите файл')->send();
     }
 
     public function start(): void
@@ -37,40 +43,41 @@ class Answer extends WebhookHandler
     }
 
 
-
     public function music(): void
     {
-      //  $chat = $this->getChatId();
-      //  $chat->message('Открой кнопошки')
-      //      ->replyKeyboard(
-      //          ReplyKeyboard::make()
-      //              ->button('Рок')->requestContact()
-      //             ->button('Панк-рок')->reply()
-      //              ->button('хип-хоп')->action('maks')
-      //              ->button('Электронная музыка')->action('ruslan'))
-      //      ->send();
+        $chat = $this->getChatId();
+        $chat->message('Открой кнопошки')
+            ->replyKeyboard(ReplyKeyboard::make()->buttons([
+                ReplyButton::make('foo'),
+                ReplyButton::make('bar')->requestQuiz(),
+                ReplyButton::make('baz')->webApp('https://webapp.dev'),
+            ]))->send();
     }
 
     public function ruslan(): void
     {
+        $this->waitLoad();
         $songPath = public_path('storage/content\songs\Мэйби Бэйби - DURAGA.mp3');
         $this->chat->audio($songPath)->send();
     }
 
     public function fedos(): void
     {
+        $this->waitLoad();
         $songPath = public_path('storage/content\songs\trinadcat_karat_-_davajj_rasskazhem_(musmore.com).mp3');
         $this->chat->audio($songPath)->send();
     }
 
     public function sergey(): void
     {
+        $this->waitLoad();
         $songPath = public_path('storage/content\songs\Gspd - ПУЛЬС (feat. КУОК).mp3');
         $this->chat->audio($songPath)->send();
     }
 
     public function maks(): void
     {
+        $this->waitLoad();
         $songPath = public_path('storage/content\songs\sqwoz-bab-300-mp3.mp3');
         $this->chat->audio($songPath)
             ->html('<b>Текст</b>')->send();

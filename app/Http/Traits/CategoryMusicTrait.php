@@ -4,9 +4,17 @@ namespace App\Http\Traits;
 
 use DefStudio\Telegraph\Keyboard\Button;
 use DefStudio\Telegraph\Keyboard\Keyboard;
+use DefStudio\Telegraph\Models\TelegraphChat;
 
 trait CategoryMusicTrait
 {
+    public function getChatId(): TelegraphChat
+    {
+        $chatId = $this->message->chat()->id();
+        $chat = new TelegraphChat();
+        $chat->chat_id = $chatId;
+        return $chat;
+    }
     public function waitLoad(): void
     {
         $this->chat->message('Ждите файл')->send();

@@ -17,15 +17,6 @@ use Illuminate\Support\Stringable;
 class Answer extends WebhookHandler
 {
     use CategoryMusicTrait;
-    public function getChatId(): TelegraphChat
-    {
-        $chatId = $this->message->chat()->id();
-        $chat = new TelegraphChat();
-        $chat->chat_id = $chatId;
-        return $chat;
-    }
-
-
     public function start(): void
     {
         $chat = $this->getChatId();
@@ -47,9 +38,10 @@ class Answer extends WebhookHandler
         $this->chat->photo($imagePath)->send();
     }
 
-    public function help(): void
+    public function contact(): void
     {
-        $this->chat->message('Говорил же не поможет')->send();
+        $this->chat->html('Если у вас есть какие-то предложения или вопросы пишите разработчику непосредственно: ')->send();
+        $this->chat->message('t.me/mdlevsha')->send();
     }
 
     protected function handleChatMessage(Stringable $text): void

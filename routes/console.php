@@ -24,8 +24,9 @@ Artisan::command('tester', function () {
 
     $bot = TelegraphBot::find(1);
     dd($bot->registerCommands([
+        'start' => 'Начальное сообщение',
         'hello' => 'говорит здарова',
         'help' => 'не поможет',
-        'music'=> 'музыка на выбор',
+        'music'=> 'Категории музыки',
     ])->send());
 });
